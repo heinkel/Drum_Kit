@@ -11,9 +11,12 @@ var tom4 = new Audio("sounds/tom-4.mp3");
 var crash = new Audio("sounds/crash.mp3");
 var kick = new Audio("sounds/kick-bass.mp3");
 
-for (var i = 0 ; i < keysLength; i++)
-    document.querySelectorAll(".drum")[i].addEventListener("click",function(){
-        var buttonKey = this.innerHTML;
+// for (var i = 0 ; i < keysLength; i++)
+//     document.querySelectorAll(".drum")[i].addEventListener("click",function(){
+//         var buttonKey = this.innerHTML;
+document.addEventListener("keydown",function(){
+   var buttonKey = event.key;
+
         switch (buttonKey){
             case 'w' :
                 tom1.play();
@@ -39,4 +42,6 @@ for (var i = 0 ; i < keysLength; i++)
             default:
                 break;
         }
-    });
+    // });
+
+});
