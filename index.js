@@ -39,27 +39,26 @@ switch (key){
         break;
 }
 }
+// this function handle animation for buttons in any case played by click or by keypress.
+function buttonAnimation(currentKey){
+        var activeButton = document.querySelector("."+ currentKey);
+        activeButton.classList.add("pressed");
+        setTimeout(function(){
+            activeButton.classList.toggle("pressed");
+        },100);
 
+}
 
 // PLAY by CLICK ON BUTTONS
 var keysLength = document.querySelectorAll(".drum").length;
 for (var i = 0 ; i < keysLength; i++)
     document.querySelectorAll(".drum")[i].addEventListener("click",function(){
-        this.classList.add("pressed");
-        var key = this.innerHTML;
-    
-        setTimeout(function(){
-            document.getElementsByClassName(key)[0].classList.toggle("pressed");
-        },100);
-        playsound(key);
+        buttonAnimation(this.innerHTML);
+        playsound(this.innerHTML);
     });
 
 // BY PRESSING KEYS
 document.addEventListener("keydown",function(event){
-   
-    document.getElementsByClassName(event.key)[0].classList.add("pressed");
-    setTimeout(function(){
-       document.getElementsByClassName(event.key)[0].classList.toggle("pressed");
-    },100);
+    buttonAnimation(event.key);
     playsound(event.key);
 });
